@@ -24,6 +24,20 @@ def get_sales_data():
 
     data_str = input("Enter your data here ")
 
-    print(f"The data you provided is {data_str}")
+    sales_data = data_str.split(",")
+
+    validate_data(sales_data)
+
+def validate_data(values):
+    """
+    Ensure the users input is 6 values exactly
+    """
+    try:
+        if len(values) != 6:
+            raise ValueError(
+                f"Exactly 6 sales required, you entered {len(values)}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")        
 
 get_sales_data()
